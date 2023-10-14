@@ -1,7 +1,9 @@
 import type { Preview } from "@storybook/react";
+import React from "react";
 
 const preview: Preview = {
   parameters: {
+    layout: "fullscreen",
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -10,6 +12,19 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          background: "#ebf4fb",
+          padding: "24px",
+          height: "calc(100vh - 48px)",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
