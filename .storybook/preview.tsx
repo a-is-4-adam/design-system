@@ -1,6 +1,8 @@
 import type { Preview } from "@storybook/react";
 import React from "react";
 
+import "../src/tailwind/tailwind.css";
+
 const preview: Preview = {
   parameters: {
     layout: "fullscreen",
