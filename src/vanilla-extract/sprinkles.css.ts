@@ -1,5 +1,5 @@
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
-import { BREAKPOINTS, buildMediaQueryString } from "./breakpoints";
+import { BREAKPOINTS, buildMediaQueryString } from "../breakpoints";
 
 export const space = {
   "0": "0",
