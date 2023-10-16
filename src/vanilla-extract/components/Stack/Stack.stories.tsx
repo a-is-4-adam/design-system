@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Stack } from "./Stack";
 import { Placeholder } from "../Placeholder/Placeholder";
-import { space, align } from "../../sprinkles.css";
+import { space, alignHorizontal, alignVertical } from "../../../tokens";
 
 const meta = {
   component: Stack,
@@ -12,11 +12,11 @@ const meta = {
       control: { type: "select" },
     },
     alignVertical: {
-      options: Object.keys(align),
+      options: Object.keys(alignVertical),
       control: { type: "select" },
     },
     alignHorizontal: {
-      options: Object.keys(align),
+      options: Object.keys(alignHorizontal),
       control: { type: "select" },
     },
   },

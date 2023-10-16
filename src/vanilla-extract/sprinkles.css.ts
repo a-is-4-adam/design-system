@@ -1,19 +1,6 @@
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import { BREAKPOINTS, buildMediaQueryString } from "../breakpoints";
-
-export const space = {
-  "0": "0",
-  "1": "4px",
-  "2": "8px",
-  "3": "12px",
-};
-
-export const align = {
-  left: "flex-start",
-  right: "flex-end",
-  center: "center",
-  stretch: "stretch",
-};
+import { alignHorizontal, alignVertical, space } from "../tokens";
 
 const responsiveProperties = defineProperties({
   conditions: {
@@ -33,10 +20,10 @@ const responsiveProperties = defineProperties({
 
 const unresponsiveProperties = defineProperties({
   properties: {
-    alignItems: align,
+    alignItems: alignVertical,
     display: ["flex"],
     flexDirection: ["column"],
-    justifyContent: align,
+    justifyContent: alignHorizontal,
     height: {
       full: "100%",
     },

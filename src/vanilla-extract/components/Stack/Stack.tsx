@@ -1,7 +1,12 @@
 import { Slot } from "@radix-ui/react-slot";
 import { PropsWithChildren } from "react";
-import { Sprinkles, sprinkles } from "../../sprinkles.css";
+import {
+  Sprinkles,
+  mapUnresponsiveValue,
+  sprinkles,
+} from "../../sprinkles.css";
 import { clsx } from "clsx";
+import { alignHorizontal, alignVertical } from "../../../tokens";
 
 type AsChildProps<Base, Comp> = (
   | {
@@ -15,7 +20,7 @@ type AsChildProps<Base, Comp> = (
 
 type StackProps = AsChildProps<
   {
-    alignVertical?: Sprinkles["justifyContent"];
+    alignVertical?: Sprinkles["alignItems"];
     alignHorizontal?: Sprinkles["justifyContent"];
     className?: string;
     space: Sprinkles["gap"];
@@ -23,6 +28,14 @@ type StackProps = AsChildProps<
   },
   React.ComponentPropsWithoutRef<"div">
 >;
+
+const invertDirectionMap = {
+  top: "left",
+  bottom: "right",
+  left: "top",
+  right: "bottom",
+  center: "center",
+} as const;
 
 export function Stack({
   asChild,
@@ -37,12 +50,16 @@ export function Stack({
     <Comp
       className={clsx(
         sprinkles({
-          alignItems: alignHorizontal,
+          alignItems: alignHorizontal
+            ? invertDirectionMap[alignHorizontal]
+            : undefined,
           display: "flex",
           flexDirection: "column",
           gap: space,
           height: alignVertical ? "full" : undefined,
-          justifyContent: alignVertical,
+          justifyContent: alignVertical
+            ? invertDirectionMap[alignVertical]
+            : undefined,
         }),
         className
       )}
