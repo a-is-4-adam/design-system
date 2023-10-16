@@ -1,22 +1,8 @@
 import { Slot } from "@radix-ui/react-slot";
 import { PropsWithChildren } from "react";
-import {
-  Sprinkles,
-  mapUnresponsiveValue,
-  sprinkles,
-} from "../../sprinkles.css";
+import { Sprinkles, sprinkles } from "../../sprinkles.css";
 import { clsx } from "clsx";
-import { alignHorizontal, alignVertical } from "../../../tokens";
-
-type AsChildProps<Base, Comp> = (
-  | {
-      asChild: true;
-    }
-  | ({
-      asChild?: never;
-    } & Comp)
-) &
-  Base;
+import { AsChildProps } from "../../../types";
 
 type StackProps = AsChildProps<
   {
